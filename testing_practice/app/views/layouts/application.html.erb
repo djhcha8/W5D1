@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestingPractice</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if current_user %>
+      <%= current_user.username %>
+      <%= button_to "Logout", session_url, method: "delete" %>
+    <% else %>
+      <%= button_to "Login", new_session_url, method: "get" %>
+      <%= button_to "Create New User", new_user_url, method: "get" %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
